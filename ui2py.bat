@@ -4,9 +4,7 @@ echo.
 
 @REM Py ver
 set pyverdir=Python310
-
-
-
+@REM PySide2
 set pyside2uicpath=%LOCALAPPDATA%\Programs\Python\%pyverdir%\Scripts
 
 @REM UI File
@@ -40,4 +38,4 @@ if defined PYSIDE2_PATH (
 echo.
 
 pause
-Rem cmd.exe /K
+@REM cmd.exe /K

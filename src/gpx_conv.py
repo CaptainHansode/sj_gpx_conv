@@ -28,6 +28,10 @@ from xml.dom import minidom
 
 def get_elevation(lat, lon, timeout):
     """国土地理院の情報より標高を取得
+    Args:
+        lat (float): 緯度
+        lon (float): 経度
+        timeout (int): タイムアウト時間
     Ref:
     http://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=137.263868&lat=36.146384&outtype=JSON
     http://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=%s&lat=%s&outtype=%s
@@ -480,10 +484,3 @@ def convert_klm_to_gpx(kml_file, hours, minutes, seconds):
 
 
 """Tests"""
-# curt_dir = os.path.dirname(__file__)
-# gpx_file_path = os.path.abspath(os.path.join(curt_dir, '../gpx_datas'))
-gpx_file_path = r"D:\ランニング\大会関連\MtFuji100\2025\25FUJI100mi_ver.1.3_250408_original.gpx"
-convert_trak_to_route(gpx_file_path, 46, 0, 0)
-# convert_route_to_track(os.path.join(gpx_file_path, "suunt_utmf2023_original.gpx"), 40, 37, 0)
-# convert_klm_to_gpx(os.path.join(gpx_file_path, "hasetune.kml"), 24, 0, 0)
-# convert_trak_to_route(os.path.join(gpx_file_path, "hidatakayama_ultra_marathon2023.gpx"), 24, 0, 0)

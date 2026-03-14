@@ -1,5 +1,5 @@
 '''
-Copyright (C) 2018 CaptainHansode(https://x.com/CaptainHansode)
+Copyright (C) 2026 CaptainHansode(https://x.com/CaptainHansode)
 sakaiden@live.jp
 
 Created by CaptainHansode(https://x.com/CaptainHansode)
@@ -64,7 +64,7 @@ def convert_route_to_track(gpx_file, hours, minutes, seconds):
     Args:
         gpx_file (str):
         hours (int):
-        minites (int):
+        minutes (int):
         seconds (int):
     Returns:
         None
@@ -309,15 +309,20 @@ def convert_trak_to_route(gpx_file, hours, minutes, seconds):
             print("ele is None")
             ele = seg.find(".//{http://www.topografix.com/GPX/1/0}ele")
             if ele is not None:
-                ele_vale = ele.text
+                try:
+                    ele_vale = float(ele.text)
+                except (ValueError, TypeError):
+                    ele_vale = 0.0
         else:
-            ele_vale = ele.text
+            try:
+                ele_vale = float(ele.text)
+            except (ValueError, TypeError):
+                ele_vale = 0.0
 
         if float(ele_vale) == 0.0:
             ele_vale = get_elevation(float(seg.get("lat")), float(seg.get("lon")), 3)
         _lat = float(seg.get("lat"))
         table += f"{_lat}, {ele_vale}\n"
-        # print(f"{_lat}, {ele_vale}")
 
         rtept_eml = conv_root.createElement("rtept")
         rtept_eml.setAttribute("lat", seg.get("lat"))
@@ -338,13 +343,13 @@ def convert_trak_to_route(gpx_file, hours, minutes, seconds):
     return None
 
 
-def convert_klm_to_gpx(kml_file, hours, minutes, seconds):
+def convert_kml_to_gpx(kml_file, hours, minutes, seconds):
     r"""
-    GoogleなどのklmデータをSunntoやGarmin用に変換
+    GoogleなどのkmlデータをSunntoやGarmin用に変換
     Args:
         kml_file (str):
         hours (int):
-        minites (int):
+        minutes (int):
         seconds (int):
     Returns:
         None
@@ -433,7 +438,7 @@ def convert_klm_to_gpx(kml_file, hours, minutes, seconds):
         coodinate = elm.find(".//{http://www.opengis.net/kml/2.2}LineString/{http://www.opengis.net/kml/2.2}coordinates")
         if coodinate is None:
             continue
-        segments = coodinate.text.replace(" ", "").split("\n")
+        segments = coodinate.text.split()
 
         for seg in segments:
             seg = seg.split(",")

@@ -14,7 +14,7 @@ kml_file_path = "KLMfile.kml"
 gpx_file_path = "GPXfile.gpx"
 
 # KLMをSunnto, COROSやGarmin用に変換
-# 2026現在はヤマレコではこの形式が読み込めるようになった
+# 2026現在はヤマレコではCOROSやGarmin用形式が読み込めるようになった
 src.gpx_conv.convert_kml_to_gpx(kml_file_path, 7, 0, 0)
 
 # Yamapやヤマレコ用などのデータをSunnto, COROSやGarmin用に変換

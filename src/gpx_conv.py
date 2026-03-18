@@ -133,7 +133,6 @@ def convert_route_to_track(gpx_file, hours, minutes, seconds):
     # 全セグメント取得
     track_segment = root.findall(".//{http://www.topografix.com/GPX/1/1}rtept")
     # time = dt.datetime.now().strftime("%Y/%m/%dT%H:%M:%S")  # dataと時間の間にTが必要
-
     time = dt.datetime.now()
 
     print(f"Track segments: {len(track_segment)}")
@@ -277,7 +276,7 @@ def convert_trak_to_route(gpx_file, hours, minutes, seconds):
     track_segment = root.findall(".//{http://www.topografix.com/GPX/1/1}trkpt")
     time = dt.datetime.now()
 
-    print(f"Track segments: {len(track_segment)}")    
+    print(f"Track segments: {len(track_segment)}")
     # TODO:白馬国際のGPSが読み込めなかった
     if len(track_segment) == 0:
         # trk # trkseg
@@ -486,6 +485,3 @@ def convert_kml_to_gpx(kml_file, hours, minutes, seconds):
 
     print("Convert klm to gpx Finish")
     return None
-
-
-"""Tests"""
